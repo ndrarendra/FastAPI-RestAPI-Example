@@ -4,3 +4,4 @@ pydantic
 python-jose[cryptography] 
 passlib[bcrypt]
 sqlalchemy
+jinja2
