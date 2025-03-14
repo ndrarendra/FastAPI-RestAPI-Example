@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - Product List</title>
+    <!-- Optionally link a CSS framework like Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container">
+    <h1>Product List</h1>
+    <div>
+        {% if products %}
+            <ul class="list-group">
+                {% for product in products %}
+                    <li class="list-group-item">
+                        <a href="/product/{{ product.id }}">{{ product.name }}</a>
+                        - ${{ product.price }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No products found.</p>
+        {% endif %}
+    </div>
+    <a href="/search" class="btn btn-primary mt-3">Search Products</a>
+</body>
+</html>

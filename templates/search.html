@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Products</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container">
+    <h1>Search Products</h1>
+    <form method="get" action="/search" class="mb-3">
+        <input type="text" name="query" placeholder="Enter product name" value="{{ query or '' }}" class="form-control">
+        <button type="submit" class="btn btn-primary mt-2">Search</button>
+    </form>
+    <div>
+        {% if query %}
+            <h2>Results for "{{ query }}"</h2>
+            {% if products %}
+                <ul class="list-group">
+                    {% for product in products %}
+                        <li class="list-group-item">
+                            <a href="/product/{{ product.id }}">{{ product.name }}</a>
+                            - ${{ product.price }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No products found.</p>
+            {% endif %}
+        {% else %}
+            <p>Please enter a search term.</p>
+        {% endif %}
+    </div>
+    <a href="/" class="btn btn-secondary mt-3">Back to Home</a>
+</body>
+</html>
